@@ -22,11 +22,22 @@ app.get("/get", (req, res) => {
     .catch((err) => res.json(err));
 });
 
-app.put("/update/:id", (req, res) => {
-  const { id } = req.params;
-  TodoModel.findByIdAndUpdate({ _id: id }, { done: true })
-    .then((result) => res.json(result))
-    .catch((err) => res.json(err));
+app.put("/update/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const todo = await TodoModel.findById(id);
+    if (!todo) return res.status(404).json({ error: "Todo not found" });
+
+    const updatedTodo = await TodoModel.findByIdAndUpdate(
+      id,
+      { done: !todo.done },
+      { new: true }
+    );
+
+    res.json(updatedTodo);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 app.delete("/delete/:id", (req, res) => {
