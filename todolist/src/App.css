@@ -23,7 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between; /* Pushes icons to the edges */
-  padding: 10px;
+  padding: 0 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
   margin: 5px 0;
@@ -37,4 +37,7 @@
 .icon {
   color: gray;
   cursor: pointer;
+}
+.line_through{
+    text-decoration: line-through;
 }

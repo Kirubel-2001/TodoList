@@ -6,7 +6,7 @@ function Create() {
   const handleAdd = () => {
     axios
       .post("http://localhost:3001/add", { task: task })
-      .then((result) => console.log(result))
+      .then(() => location.reload())
       .catch((err) => console.log(err));
   };
   return (
@@ -15,6 +15,7 @@ function Create() {
         type="text"
         placeholder="Add Task"
         onChange={(e) => setTask(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && handleAdd()}
       />
       <button type="button" onClick={handleAdd}>
         Add
