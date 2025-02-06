@@ -9,10 +9,14 @@ app.use(express.json())
 
 mongoose.connect('mongodb://0.0.0.0:27017/test')
 
-app.post('/add', (req, res => {
+app.post('/add', (req, res) => {
     const task = req.body.task;
-    TodoModel.create
-}))
+    TodoModel.create({
+        task: task
+    }).then((result) => {
+        res.send(result)
+    }).catch(err => res.json(err))
+}) 
 
 app.listen(3001, () => {
     console.log("Server is running on port 3001");
