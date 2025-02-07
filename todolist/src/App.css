@@ -22,7 +22,7 @@
   width: 345px;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Pushes icons to the edges */
+  justify-content: space-between; 
   padding: 0 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -32,7 +32,7 @@
 .task-content {
   display: flex;
   align-items: center;
-  gap: 10px; /* Adds space between icon and text */
+  gap: 10px;
 }
 .icon {
   color: gray;
